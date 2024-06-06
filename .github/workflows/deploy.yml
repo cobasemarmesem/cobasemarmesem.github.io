@@ -30,10 +30,10 @@ jobs:
         READ_TOKEN: ${{ secrets.READ_TOKEN }}
       run: |
         npm run tinacms build && bundle exec jekyll build
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
-      env:
-        CLIENT_ID: ${{ 4d14f57d-d7a8-42e3-831e-876a01d7bb55 }}
-        READ_TOKEN: ${{ ece0c1435de87eb113c793924d193b2bd7e97594 }}
+   - name: Build TinaCMS
+  env:
+    TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+    TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+  run: npx tinacms build
       with:
         folder: _site
